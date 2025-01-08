@@ -6,54 +6,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
-
-.container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#auth-container, #survey-container, #results-container {
+    background-color: white;
     padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
-
 h1 {
-    color: #007acc;
-    margin-bottom: 20px;
+    color: #1e90ff;
 }
-
 label {
     display: block;
-    margin: 10px 0 5px;
-    color: #333;
+    margin-bottom: 10px;
 }
-
 input {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
 }
-
 button {
-    background-color: #007acc;
+    background-color: #1e90ff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
 }
-
 button:hover {
-    background-color: #005f99;
+    background-color: #1c86ee;
 }
-
-.error {
-    color: red;
-    margin-top: 10px;
+.question {
+    margin-bottom: 20px;
 }
