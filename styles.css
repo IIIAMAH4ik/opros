@@ -1,45 +1,48 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 20px;
 }
-#auth-container, #survey-container, #results-container {
-    background-color: white;
+
+h1, h2 {
+    color: #333;
+}
+
+#auth-container, #survey-results-container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-h1 {
-    color: #1e90ff;
-}
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-input {
+
+table {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border-collapse: collapse;
+    margin-top: 10px;
 }
-button {
-    background-color: #1e90ff;
-    color: white;
-    border: none;
+
+table th, table td {
+    border: 1px solid #ddd;
     padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
+    text-align: left;
 }
-button:hover {
-    background-color: #1c86ee;
+
+table th {
+    background-color: #007BFF;
+    color: #fff;
 }
-.question {
-    margin-bottom: 20px;
+
+.results-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
+
+#results-analysis {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
