@@ -1,0 +1,42 @@
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const surname = document.getElementById('surname').value.trim();
+    const course = document.getElementById('course').value.trim();
+    const errorMessage = document.getElementById('error-message');
+
+    const allowedStudents = [
+        { surname: 'Токмакова', course: '3' },
+        { surname: 'Кочесокова', course: '3' },
+        { surname: 'Белимготова', course: '3' },
+        { surname: 'Калмыкова', course: '3' },
+        { surname: 'Хабалов', course: '3' },
+        { surname: 'Шуева', course: '3' },
+        { surname: 'Хавпачев', course: '3' },
+        { surname: 'Ципинов', course: '3' },
+        { surname: 'Тишков', course: '3' },
+        { surname: 'Биттиров', course: '3' },
+        { surname: 'Жанимов', course: '3' },
+        { surname: 'Келеметов', course: '3' },
+        { surname: 'Шогенов', course: '3' },
+        { surname: 'Шарипова', course: '3' },
+        { surname: 'Дауров', course: '3' }
+    ];
+
+    const isTeacher = surname === 'Бозиев' && course.toLowerCase() === 'преподаватель';
+
+    if (isTeacher) {
+        window.location.href = 'teacher-results.html';
+        return;
+    }
+
+    const isStudentValid = allowedStudents.some(
+        student => student.surname === surname && student.course === course
+    );
+
+    if (isStudentValid) {
+        window.location.href = 'survey.html';
+    } else {
+        errorMessage.textContent = 'Неверные фамилия или курс.';
+    }
+});
