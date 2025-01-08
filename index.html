@@ -90,9 +90,43 @@
             <button type="submit">Отправить</button>
         </form>
     </div>
-    <div id="results-container" style="display: none;">
-        <h1>Результаты опросов</h1>
-        <div id="results"></div>
+    <!-- Теоретический тест -->
+        <h2>Теоретический тест</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Студент</th>
+                    <th>Результат (%)</th>
+                    <th>Комментарий</th>
+                </tr>
+            </thead>
+            <tbody id="theoretical-test-results">
+                <!-- Динамические данные -->
+            </tbody>
+        </table>
+
+        <!-- Практический тест -->
+        <h2>Практический тест</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Студент</th>
+                    <th>Результат (%)</th>
+                    <th>Комментарий</th>
+                </tr>
+            </thead>
+            <tbody id="practical-test-results">
+                <!-- Динамические данные -->
+            </tbody>
+        </table>
+
+        <!-- Анализ результатов -->
+        <h2>Анализ полученных результатов</h2>
+        <div id="results-analysis">
+            <p>Общее количество студентов: <span id="total-students">0</span></p>
+            <p>Средний балл теоретического теста: <span id="avg-theoretical-score">0%</span></p>
+            <p>Средний балл практического теста: <span id="avg-practical-score">0%</span></p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
