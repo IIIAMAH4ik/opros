@@ -1,42 +1,54 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
+const validStudents = [
+    "Токмакова", "Кочесокова", "Белимготова", "Калмыкова", "Хабалов", "Шуева",
+    "Хавпачев", "Ципинов", "Тишков", "Биттиров", "Жанимов", "Келеметов",
+    "Шогенов", "Шарипова", "Дауров"
+];
+const resultsKey = "surveyResults"; // Ключ для хранения данных в LocalStorage
+
+// Инициализация
+document.getElementById("auth-form").addEventListener("submit", handleAuth);
+document.getElementById("survey-form").addEventListener("submit", handleSurvey);
+
+// Функция авторизации
+function handleAuth(event) {
     event.preventDefault();
+    const lastName = document.getElementById("lastName").value.trim();
+    const course = document.getElementById("course").value.trim();
 
-    const surname = document.getElementById('surname').value.trim();
-    const course = document.getElementById('course').value.trim();
-    const errorMessage = document.getElementById('error-message');
-
-    const allowedStudents = [
-        { surname: 'Токмакова', course: '3' },
-        { surname: 'Кочесокова', course: '3' },
-        { surname: 'Белимготова', course: '3' },
-        { surname: 'Калмыкова', course: '3' },
-        { surname: 'Хабалов', course: '3' },
-        { surname: 'Шуева', course: '3' },
-        { surname: 'Хавпачев', course: '3' },
-        { surname: 'Ципинов', course: '3' },
-        { surname: 'Тишков', course: '3' },
-        { surname: 'Биттиров', course: '3' },
-        { surname: 'Жанимов', course: '3' },
-        { surname: 'Келеметов', course: '3' },
-        { surname: 'Шогенов', course: '3' },
-        { surname: 'Шарипова', course: '3' },
-        { surname: 'Дауров', course: '3' }
-    ];
-
-    const isTeacher = surname === 'Бозиев' && course.toLowerCase() === 'преподаватель';
-
-    if (isTeacher) {
-        window.location.href = 'teacher-results.html';
-        return;
-    }
-
-    const isStudentValid = allowedStudents.some(
-        student => student.surname === surname && student.course === course
-    );
-
-    if (isStudentValid) {
-        window.location.href = 'survey.html';
+    if (validStudents.includes(lastName) && course === "3") {
+        document.getElementById("auth-container").style.display = "none";
+        document.getElementById("survey-container").style.display = "block";
+    } else if (lastName === "Бозиев" && course.toLowerCase() === "преподаватель") {
+        document.getElementById("auth-container").style.display = "none";
+        document.getElementById("results-container").style.display = "block";
+        showResults();
     } else {
-        errorMessage.textContent = 'Неверные фамилия или курс.';
+        alert("Неверная фамилия или курс!");
     }
-});
+}
+
+// Функция отправки опроса
+function handleSurvey(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const answers = Object.fromEntries(formData.entries());
+    saveResults(answers);
+    alert("Ваши ответы сохранены!");
+    event.target.reset();
+}
+
+// Функция сохранения результатов
+function saveResults(answers) {
+    const results = JSON.parse(localStorage.getItem(resultsKey)) || [];
+    results.push(answers);
+    localStorage.setItem(resultsKey, JSON.stringify(results));
+}
+
+// Функция отображения результатов
+function showResults() {
+    const resultsContainer = document.getElementById("results");
+    const results = JSON.parse(localStorage.getItem(resultsKey)) || [];
+    resultsContainer.innerHTML = results.map((res, index) => {
+        return `<p>Опрос ${index + 1}: ${JSON.stringify(res)}</p>`;
+    }).join("");
+}
